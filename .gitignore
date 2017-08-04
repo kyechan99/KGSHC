@@ -1,0 +1,15 @@
+# kgshc ignore
+
+# config - db info
+/config.php
+
+# smart editor
+/bbs/se/
+
+# flat-ui (bootstrap)
+/css/
+/dist/
+/fonts/
+/images/icons/
+/lib/
+/assets/
