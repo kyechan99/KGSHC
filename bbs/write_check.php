@@ -1,5 +1,5 @@
 <?php
-require_once '../preset';
+require_once '../preset.php';
 ?>
 <?php
 
@@ -9,7 +9,7 @@ $id = $_SESSION['user_id'];
 $nick = $_SESSION['user_nick'];
 echo iconv("EUC-KR", "UTF-8", $member_idx);
 
-$q = "INSERT INTO ap_bbs (member_idx, id,nick,subject,content,reg_date) VALUES('$member_idx','$id','$nick', '$subject', '$content', '$reg_date')";
+$q = "INSERT INTO ap_bbs_$bbs_idx (member_idx, id,nick,subject,content,reg_date) VALUES('$member_idx','$id','$nick', '$subject', '$content', '$reg_date')";
 
 $result = $mysqli->query($q);
 
@@ -24,8 +24,8 @@ else {
 
 $mysqli->close();
 //var_dump($url);
-
-header('Location: '.$url['root'].'bbs/write_done');
+//echo $q;
+header('Location: '.$url['root'].'bbs/write_done.php?bbs_idx='.$bbs_idx);
 exit();
 
 

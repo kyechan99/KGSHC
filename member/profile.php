@@ -1,11 +1,11 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/gimotti/preset.php';
-include $_SERVER['DOCUMENT_ROOT'].'/gimotti/header.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/preset.php';
+include $_SERVER['DOCUMENT_ROOT'].'/header.php';
 ?>
 
 
 
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/gimotti/footer.php';
+include $_SERVER['DOCUMENT_ROOT'].'/footer.php';
 ?>

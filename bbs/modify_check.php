@@ -1,9 +1,9 @@
 <?php
-require_once '../preset';
+require_once '../preset.php';
 ?>
 <?php
 
-$q = "UPDATE ap_bbs SET subject='$subject',content='$content' WHERE doc_idx=$doc_idx";
+$q = "UPDATE ap_bbs_$bbs_idx SET subject='$subject',content='$content' WHERE doc_idx=$doc_idx";
 $result = $mysqli->query($q);
 
 if ($result==false) {
@@ -18,7 +18,7 @@ else {
 $mysqli->close();
 //var_dump($url);
 
-header('Location: '.$url['root'].'bbs/view?doc_idx='.$doc_idx);
+header('Location: '.$url['root'].'bbs/view.php?bbs_idx='.$bbs_idx.'&doc_idx='.$doc_idx);
 exit();
 
 ?>

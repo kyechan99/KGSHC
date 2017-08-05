@@ -1,6 +1,6 @@
 <?php
-require_once '../preset';
-include '../header';
+require_once '../preset.php';
+include '../header.php';
 ?>
 <?php
 if(isset($doc_idx)==false) {
@@ -8,7 +8,7 @@ if(isset($doc_idx)==false) {
     exit();
 }
 
-$q = "SELECT * FROM ap_bbs WHERE doc_idx = $doc_idx";
+$q = "SELECT * FROM ap_bbs_$bbs_idx WHERE doc_idx = $doc_idx";
 $result = $mysqli->query($q);
 $data = $result->fetch_array();
 
@@ -23,7 +23,7 @@ $data = $result->fetch_array();
     <div class="row">
         <div class="col-md-12">
             <h4>자유게시판</h4>
-            <form name ="modify_form" method = "POST" action = "./modify_check">
+            <form name ="modify_form" method = "POST" action = "./modify_check.php?bbs_idx=<?php echo $bbs_idx; ?>&doc_idx=<?php echo $doc_idx; ?>">
                 <div class="form-group">
                     <input type="text" class="form-control" name = "subject" value="<?php echo $data['subject'];?>">
                 </div>
@@ -57,12 +57,12 @@ $data = $result->fetch_array();
 </div> <!-- container-->
 <div>
     <?php
-    echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/gimotti/bbs/list" class="btn" >목록</a>';
+    echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/bbs/list.php?bbs_idx='.$bbs_idx.'" class="btn" >목록</a>';
     ?>
 </div>
 
 
 
 <?php
-include '../footer';
+include '../footer.php';
 ?>

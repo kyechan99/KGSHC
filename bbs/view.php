@@ -3,12 +3,22 @@ require_once '../preset.php';
 include '../header.php';
 ?>
 <?php
+if(isset($bbs_idx)==false) {
+    echo '게시판이 지정되지 않았습니다.';
+    exit();
+}
+else if($bbs_idx > 5 || $bbs_idx < 0) {
+    echo '없는 게시판이 지정되었습니다.';
+    exit();
+}
+
+
 if(isset($doc_idx)==false) {
     echo '글번호가 지정되지 않았습니다.';
     exit();
 }
 
-$q = "SELECT * FROM ap_bbs WHERE doc_idx = $doc_idx";
+$q = "SELECT * FROM ap_bbs_$bbs_idx WHERE doc_idx = $doc_idx";
 $result = $mysqli->query($q);
 $data = $result->fetch_array();
 
@@ -24,16 +34,18 @@ $data = $result->fetch_array();
             <hr style="border-top: 2px solid #34495E">
             <td>
                 <p style="font-size: 25px; margin-bottom: 0px;margin-top: 0px;margin-left: 30px;"><?php echo htmlspecialchars($data['subject']); ?></p>
-                <p style="margin-top: 0px;margin-bottom: 0px;margin-left: 0px;"><?php
-                    if(date( 'Y-m-d',$data['reg_date'] ) == date( 'Y-m-d',time() ))
-                    {
+                <p style="margin-top: 0px;margin-bottom: 0px;margin-left: 0px;">
+                &nbsp;&nbsp;&nbsp;
+                <?php
+                  if(date( 'Y-m-d',$data['reg_date'] ) == date( 'Y-m-d',time() ))
+                  {
                       echo date( 'H:i:s',$data['reg_date'] );
                   }
                   else
                   {
                       echo date( 'Y-m-d H:i:s',$data['reg_date'] );
                   }
-                  ?>
+                ?>
               </p>
           </td>
       </tr>
@@ -52,7 +64,7 @@ $data = $result->fetch_array();
 
             <?php while($mem_data = $mem_result->fetch_array()) :?>
               <?php if($mem_data['id'] == $data['id']): ?>
-                <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/gimotti/bbs/se/upload/<?php echo $mem_data['profile'];?>">
+                <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/se/upload/<?php echo $mem_data['profile'];?>">
             <?php endif ?>
         <?php endwhile ?>
     </div> 
@@ -80,16 +92,16 @@ $data = $result->fetch_array();
       <p>
         <div class="btn-group" style="float:right;padding-top: 0px; margin-right: 1%;border-left-width: 10px;margin-left: 30px;">
             <?php
-            echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/gimotti/bbs/list" class="btn btn-primary" >목록</a>';
+            echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/bbs/list.php?bbs_idx='.$bbs_idx.'" class="btn btn-primary" >목록</a>';
             ?>
             <?php
             if( $_SESSION['member_idx']==$data['member_idx']) {
-                echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/gimotti/bbs/modify?doc_idx='.$doc_idx.'" class="btn btn-primary">수정</a>';
+                echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/bbs/modify.php?bbs_idx='.$bbs_idx.'&doc_idx='.$doc_idx.'" class="btn btn-primary">수정</a>';
             }
             ?>
             <?php
             if( $_SESSION['member_idx']==$data['member_idx']) {
-                echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/gimotti/bbs/delete?doc_idx='.$doc_idx.'" class="btn btn-primary">삭제</a>';
+                echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/bbs/delete.php?bbs_idx='.$bbs_idx.'&doc_idx='.$doc_idx.'" class="btn btn-primary">삭제</a>';
             }
             ?>
         </div>
@@ -103,7 +115,7 @@ $data = $result->fetch_array();
     <!-- 댓글 리스트 -->
 
     <?php
-    $comment_q = "SELECT * FROM ap_comment WHERE doc_idx = '$doc_idx'";
+    $comment_q = "SELECT * FROM ap_comment_$bbs_idx WHERE doc_idx = '$doc_idx'";
     $comment_result = $mysqli->query($comment_q);
     $comment_num = $comment_result->num_rows;
 
@@ -123,7 +135,7 @@ $data = $result->fetch_array();
             {
                 if($searchProfile['id'] == $mdata['id'])
                 {
-                    echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/gimotti/bbs/se/upload/'.$searchProfile['profile'].'">';
+                    echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/'.$searchProfile['profile'].'">';
                 }
             }
 
@@ -151,7 +163,7 @@ $data = $result->fetch_array();
   <hr style="border-top: 0.001px solid #c0cdd1">
 
   <div class="navbar-collapse collapse" id="navbar-collapse-9">
-    <form name="comment_form" method="post" action="./comment_check" role="form">
+    <form name="comment_form" method="post" action="./comment_check?bbs_idx=<?php echo $bbs_idx; ?>&doc_idx=<?php echo $doc_idx; ?>" role="form">
         <input type="text" name="doc_idx" style="border-left-width: 0px;border-right-width: 0px;border-bottom-width: 0px;padding-bottom: 0px;border-top-width: 0px;padding-top: 0px;width: 0px;" value=<?php echo $doc_idx; ?>></input>
         <div class="form-group">
             <textarea type="text" name="comment" placeholder="댓글을 입력해 주세요." style="resize: none;" class="form-control" rows="6"></textarea>

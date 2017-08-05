@@ -1,9 +1,9 @@
 <?php
-require_once '../preset';
+require_once '../preset.php';
 ?>
 <?php
 
-$q = "DELETE FROM ap_bbs WHERE doc_idx=$doc_idx";
+$q = "DELETE FROM ap_bbs_$bbs_idx WHERE doc_idx=$doc_idx";
 $result = $mysqli->query($q);
 
 if ($result==false) {
@@ -17,7 +17,7 @@ else {
 
 $mysqli->close();
 
-header('Location: '.$url['root'].'bbs/delete_done');
+header('Location: '.$url['root'].'bbs/delete_done.php');
 exit();
 
 ?>

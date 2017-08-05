@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/gimotti/preset.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/preset.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -8,14 +8,14 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/gimotti/preset.php';
     <TITLE>기모띠</TITLE>
     <meta charset="utf-8">
     
-    <link href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/gimotti/main.css" rel="stylesheet">
+    <link href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/main.css" rel="stylesheet">
 
-    <link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/gimotti/images/favicon.ico">
+    <link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/gimotti/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/gimotti/css/flat-ui.css" rel="stylesheet">
+    <link href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/flat-ui.css" rel="stylesheet">
 
     <style>
       body {
@@ -39,7 +39,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/gimotti/preset.php';
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/gimotti">
-              <img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/gimotti/images/title.png">
+              <img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/images/title.png">
             </a>
           </div>
         </div>

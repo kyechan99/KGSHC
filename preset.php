@@ -2,10 +2,10 @@
 session_start();
 
 $p = array();
-$path['root'] = $_SERVER['DOCUMENT_ROOT'].'/gimotti/';
+$path['root'] = $_SERVER['DOCUMENT_ROOT'].'/';
 
 $url = array();
-$url['root'] = 'http://'.$_SERVER['HTTP_HOST'].'/gimotti/'; 
+$url['root'] = 'http://'.$_SERVER['HTTP_HOST'].'/'; 
 
 require_once ($path['root'].'config.php');
 

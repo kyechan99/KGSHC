@@ -4,9 +4,16 @@ include '../header.php';
 ?>
 
 <?php
+if(isset($bbs_idx)==false) {
+    echo '게시판이 지정되지 않았습니다.';
+    exit();
+}
+else if($bbs_idx > 5 || $bbs_idx < 0) {
+    echo '없는 게시판이 지정되었습니다.';
+    exit();
+}
 
-
-$q = "SELECT * FROM ap_bbs";
+$q = "SELECT * FROM ap_bbs_".$bbs_idx;
 $result = $mysqli->query($q);
 
 
@@ -25,7 +32,7 @@ $mem_result = $mysqli->query($mem_q);
   <div class="row">
     <div class="col-md-12">
       <p>
-        <button type="button" class="btn btn-info" onclick="location.href='http://<?php echo $_SERVER['HTTP_HOST'];?>/gimotti/bbs/write'">글쓰기</button>
+        <button type="button" class="btn btn-info" onclick="location.href='http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/write.php?bbs_idx=<?php echo $bbs_idx; ?>'">글쓰기</button>
       </p>
     </div>
   </div>
@@ -56,7 +63,7 @@ $mem_result = $mysqli->query($mem_q);
       $record_to_get = $total_record - $start_record;
     }
 
-    $q = "SELECT * FROM ap_bbs WHERE 1 ORDER BY doc_idx DESC LIMIT $start_record, $record_to_get";
+    $q = "SELECT * FROM ap_bbs_$bbs_idx WHERE 1 ORDER BY doc_idx DESC LIMIT $start_record, $record_to_get";
     $result = $mysqli->query($q);
     if($result==false) {
 
@@ -76,9 +83,9 @@ $mem_result = $mysqli->query($mem_q);
         <th style="text-align:center;">등록일시</th>
       </thead>
       <?php while($data = $result->fetch_array()) :?>
-        <tr style="height: 150px;text-align:center;" onclick="location.href='http://<?php echo $_SERVER['HTTP_HOST'];?>/gimotti/bbs/view?doc_idx=<?php echo $data['doc_idx']; ?>'" >
+        <tr style="height: 150px;text-align:center;" onclick="location.href='http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/view.php?bbs_idx=<?php echo $bbs_idx; ?>&doc_idx=<?php echo $data['doc_idx']; ?>'" >
           <td style="font-size: 30px; padding-top: 5%;"><?php echo $data['doc_idx']?></td>
-          <td style="padding-top: 5.5%;"><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/gimotti/bbs/view?doc_idx=<?php echo $data['doc_idx']; ?>" style="padding-bottom: 15%; padding-top: 15%; padding-left: 10%; padding-right: 10%;"><?php echo htmlspecialchars($data['subject'])?></a></td>
+          <td style="padding-top: 5.5%;"><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/view.php?bbs_idx=<?php echo $bbs_idx; ?>&doc_idx=<?php echo $data['doc_idx']; ?>" style="padding-bottom: 15%; padding-top: 15%; padding-left: 10%; padding-right: 10%;"><?php echo htmlspecialchars($data['subject'])?></a></td>
           <td style="font-size: 20px; padding-top: 4.7%;"><?php echo $data["nick"]?>
             &nbsp&nbsp
 
@@ -91,7 +98,7 @@ $mem_result = $mysqli->query($mem_q);
 
             <?php while($mem_data = $mem_result->fetch_array()) :?>
               <?php if($mem_data['id'] == $data['id']): ?>
-                <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/gimotti/bbs/se/upload/<?php echo $mem_data['profile'];?>">
+                <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/se/upload/<?php echo $mem_data['profile'];?>">
               <?php endif ?>
             <?php endwhile ?>
 
@@ -141,7 +148,7 @@ $mem_result = $mysqli->query($mem_q);
 
         if(1<$now_block ) {
           $pre_page = ($now_block-1)*$page_per_block;
-          echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/gimotti/bbs/list?page='.$pre_page.'">이전</a>';
+          echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/bbs/list?bbs_idx='.$bbs_idx.'&page='.$pre_page.'">이전</a>';
         }
 
         $start_page = ($now_block-1)*$page_per_block+1;
@@ -153,13 +160,13 @@ $mem_result = $mysqli->query($mem_q);
         ?>
 
         <?php for($i=$start_page;$i<=$end_page;$i++) :?>
-          <li><a href="./list?id=<?php echo $id ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+          <li><a href="./list?bbs_idx=<?php echo $bbs_idx; ?>&id=<?php echo $id ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
         <?php endfor?>
       </ul>
       <?php
       if($now_block < $total_block) {
         $post_page = ($now_block)*$page_per_block+1;
-        echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/bbs/list?page='.$post_page.'">다음</a>';
+        echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/bbs/list?bbs_idx='.$bbs_idx.'&page='.$post_page.'">다음</a>';
       }
 
       ?>

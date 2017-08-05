@@ -1,6 +1,6 @@
 <?php
-require_once '../preset';
-include '../header';
+require_once '../preset.php';
+include '../header.php';
 
 
 $delete_status = $_SESSION['delete_status'];
@@ -16,5 +16,5 @@ else {
     echo '<div class="container">'.$message.'</div>';
 ?>
 <?php
-    include '../footer';
+    include '../footer.php';
 ?>

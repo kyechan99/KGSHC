@@ -1,6 +1,6 @@
 <?php
-require_once '../preset';
-include '../header';
+require_once '../preset.php';
+include '../header.php';
 ?>
 
 </div>
@@ -9,7 +9,7 @@ include '../header';
 
 <?php 
 if(!isset($_SESSION['is_logged'])) {             
-echo("<script>location.replace('../member/relogin');</script>");  
+echo("<script>location.replace('../member/relogin.php');</script>");  
 }
 ?>
 
@@ -18,7 +18,7 @@ echo("<script>location.replace('../member/relogin');</script>");
     <div class="row">
         <div class="col-md-12">
             <h4>자유게시판</h4>
-            <form  name ="write_form" method = "POST" action="./write_check" class="form">
+            <form  name ="write_form" method = "POST" action="./write_check.php?bbs_idx=<?php echo $bbs_idx; ?>" class="form">
                 <div class="form-group">
                     <input type="text" class="form-control" name = "subject" placeholder="제목">
                 </div>
@@ -43,7 +43,7 @@ echo("<script>location.replace('../member/relogin');</script>");
                 </script>
                 <script type="text/javascript" src="./quick_photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"> </script>
             </div>
-            <div class="form-group">
+            <!--<div class="form-group">
                 <label class="checkbox" for="checkbox4">
                     <input type="checkbox" data-toggle="checkbox" value="" id="checkbox4" required checked>
                     사각형
@@ -89,18 +89,18 @@ echo("<script>location.replace('../member/relogin');</script>");
                     <option value="3">4 option</option>
                     <option value="4">5 option</option>
                 </select>
-            </div>
-            <hr/><hr/><hr/><hr/>
+            </div>-->
+            <br/><br/><br/><br/>
             <input style="margin-left: 47%;"class="btn btn-default" type="submit" value="저장" onclick="submitContents(this)" />
         </form>
     </div>
 </div><!-- /.row -->
 </div>    
-<hr/>    
-<hr/>    
-<hr/>    
-<hr/>
+<br/>    
+<br/>    
+<br/>    
+<br/>
 
 <?php
-include '../footer';
+include '../footer.php';
 ?>

@@ -4,14 +4,14 @@
         <TITLE>KGSHC</TITLE>
         <meta charset="utf-8">
         
-        <link href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/gimotti/main.css" rel="stylesheet">
+        <link href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/main.css" rel="stylesheet">
 
-        <link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/gimotti/images/favicon.ico">
+        <link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/images/favicon.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/gimotti/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-        <link href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/gimotti/css/flat-ui.css" rel="stylesheet">
+        <link href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/flat-ui.css" rel="stylesheet">
 
         <style>
             body {
@@ -34,9 +34,9 @@
         <?php
         if(isset($_SESSION['is_logged'])) {
             echo '<div style="float:right; margin-right: 20%;">
-            <a href="http://'.$_SERVER['HTTP_HOST'].'/gimotti/member/logout">로그아웃</a> 
+            <a href="http://'.$_SERVER['HTTP_HOST'].'/member/logout.php">로그아웃</a> 
             &nbsp&nbsp&nbsp
-            <a href="http://'.$_SERVER['HTTP_HOST'].'/gimotti/member/profile?doc_idx='.$_SESSION['user_id'].'">회원정보</a>
+            <a href="http://'.$_SERVER['HTTP_HOST'].'/member/profile.php?doc_idx='.$_SESSION['user_id'].'">회원정보</a>
         </div>';
     }
     ?>
@@ -55,8 +55,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/gimotti">
-                        <img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/gimotti/images/title.png">
+                    <a class="navbar-brand" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>">
+                        <img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/images/title.png">
                     </a>
                 </div>
 
@@ -66,11 +66,11 @@
                         echo "<font color='black'>".$_SESSION['user_nick']."</font>";
                         echo "<font color='black'>(님) 안녕하세요.</font>";
                         echo '&nbsp&nbsp';
-                        echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/gimotti/bbs/se/upload/'.$_SESSION['user_profile'].'">';
+                        echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/'.$_SESSION['user_profile'].'">';
 
                 }
                 else{
-                    include $_SERVER['DOCUMENT_ROOT'].'/gimotti/show_login.php';
+                    include $_SERVER['DOCUMENT_ROOT'].'/show_login.php';
                 }
                 ?>
             </div>
@@ -92,7 +92,7 @@
                 <div class="collapse navbar-collapse navbar-collapse-01">
                     <ul class="nav navbar-nav navbar-left">
 
-                        <li class="active"><a href="index">메인</a></li>
+                        <li class="active"><a href="index.php">메인</a></li>
 
                         <li class="dropdown">
                             <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
@@ -100,8 +100,8 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#fakelink">프로젝트 소개</a></li>
-                                <li> <a href="#fakelink">구인/구직</a></li>
+                                <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=2">프로젝트 소개</a></li>
+                                <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=3">구인/구직</a></li>
                             </ul>
                         </li>
 
@@ -111,15 +111,15 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#fakelink">급식</a></li>
-                                <li> <a href="#fakelink">교통</a></li>
+                                <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=4">급식</a></li>
+                                <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=5">교통</a></li>
                             </ul>
                         </li>
 
-                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/gimotti/bbs/list">자유게시판</a></li>
+                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=0">자유게시판</a></li>
 
 
-                        <li><a href="#fakelink">익명게시판</a></li>
+                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=1">익명게시판</a></li>
                         
                         <li class="dropdown">
                             <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
