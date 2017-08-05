@@ -63,16 +63,20 @@
                 <div style="float:right; color: #ecf0f1; font-size: 30px;padding-top: 1%; margin-right: 1%;">
                     <?php 
                     if(isset($_SESSION['is_logged'])) {
-                        echo "<font color='black'>".$_SESSION['user_nick']."</font>";
-                        echo "<font color='black'>(님) 안녕하세요.</font>";
-                        echo '&nbsp&nbsp';
-                        echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/'.$_SESSION['user_profile'].'">';
-
-                }
-                else{
-                    include $_SERVER['DOCUMENT_ROOT'].'/show_login.php';
-                }
-                ?>
+                        if ($_SESSION['is_logged'] == 'YES') {
+                            echo "<font color='black'>".$_SESSION['user_nick']."</font>";
+                            echo "<font color='black'>(님) 안녕하세요.</font>";
+                            echo '&nbsp&nbsp';
+                            echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/'.$_SESSION['user_profile'].'">';
+                        }
+                        else {
+                            include $_SERVER['DOCUMENT_ROOT'].'/show_login.php';
+                        }
+                    }
+                    else{
+                        include $_SERVER['DOCUMENT_ROOT'].'/show_login.php';
+                    }
+                    ?>
             </div>
         </div>
     </nav>
@@ -92,7 +96,7 @@
                 <div class="collapse navbar-collapse navbar-collapse-01">
                     <ul class="nav navbar-nav navbar-left">
 
-                        <li class="active"><a href="index.php">메인</a></li>
+                        <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>">메인</a></li>
 
                         <li class="dropdown">
                             <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">

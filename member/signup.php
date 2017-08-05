@@ -3,29 +3,7 @@ require_once '../preset.php';
 include '../header.php';
 ?>
 
-<hr />
-
-<script>
-  function same_check(f){
-    f=f.form;
-    if(f.user_pass.value != f.user_pass2.value){
-      alert('입력내용이 같지 않음');
-      f.user_pass2.focus();
-      document.getElementById("correct_input_pass2").className ="form-group";
-    }
-    else if(f.user_pass2.value == ''){
-      alert('입력내용이 없습니다.');      
-    }
-    else{
-      document.getElementById("correct_input_pass2").className ="form-group has-success";
-    }
-  }
-
-  function correct_check(input_id){
-      document.getElementById(input_id).className ="form-group has-success";
-    
-  }
-</script>
+<br />
 
 <div class="container">
   <div class="row">
@@ -46,18 +24,6 @@ include '../header.php';
             <input class="form-control" type="password" name="user_pass" id="inputPassword1" placeholder="Password" onblur="correct_check('correct_input_pass')" required>
             <span class="form-control-feedback control-feedback-lg  fui-lock"  style="padding-right: 30px;margin-top: 0px;top: 0px;"></span>
           </div>
-        </div>
-
-        <div class="form-group" id="correct_input_pass2">
-          <label for="inputPassword1" class="col-lg-2 control-label">비밀번호 재확인</label>
-          <div class="col-lg-10">
-            <input class="form-control" type="password" name="user_pass2" id="inputPassword1" placeholder="Password" onblur="same_check(this)"  required>
-            <span class="form-control-feedback control-feedback-lg  fui-lock"  style="padding-right: 30px;margin-top: 0px;top: 0px;"></span>
-          </div>
-        </div>
-        
-        <div id="mouse_no" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-          <font color="#f26d7d">비밀번호가 일치하지 않습니다.</font>
         </div>
 
         <div class="form-group" id="correct_input_nick">

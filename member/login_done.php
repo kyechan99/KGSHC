@@ -8,7 +8,7 @@ if($is_logged=='YES') {
     $user_nick = $_SESSION['user_id'];
     $user_profile = $_SESSION['user_profile'];
     $message = $user_id . ' 님, 로그인 했습니다.';
-        header('Location: '.$url['root'].'../index.php');
+	// header('Location: http://kgshc.net/');
 }
 else {
     $message = '로그인이 실패했습니다.';

@@ -85,7 +85,15 @@ $mem_result = $mysqli->query($mem_q);
       <?php while($data = $result->fetch_array()) :?>
         <tr style="height: 150px;text-align:center;" onclick="location.href='http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/view.php?bbs_idx=<?php echo $bbs_idx; ?>&doc_idx=<?php echo $data['doc_idx']; ?>'" >
           <td style="font-size: 30px; padding-top: 5%;"><?php echo $data['doc_idx']?></td>
-          <td style="padding-top: 5.5%;"><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/view.php?bbs_idx=<?php echo $bbs_idx; ?>&doc_idx=<?php echo $data['doc_idx']; ?>" style="padding-bottom: 15%; padding-top: 15%; padding-left: 10%; padding-right: 10%;"><?php echo htmlspecialchars($data['subject'])?></a></td>
+          <td style="padding-top: 5.5%;"><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/view.php?bbs_idx=<?php echo $bbs_idx; ?>&doc_idx=<?php echo $data['doc_idx']; ?>" style="padding-bottom: 15%; padding-top: 15%; padding-left: 10%; padding-right: 10%;"><?php echo htmlspecialchars($data['subject'])?>
+            <?php
+                $dI = $data['doc_idx'];
+                $comment_q = "SELECT count(*) FROM ap_comment_$bbs_idx WHERE doc_idx = $dI";
+                $comment_result = $mysqli->query($comment_q);
+                $comment_arr = $comment_result->fetch_array();
+                echo "[".$comment_arr['count(*)']."]";
+            ?></a>
+            </td>
           <?php  if($bbs_idx == 1) :?>
             <td style="font-size: 20px; padding-top: 4.7%;">
                     익명

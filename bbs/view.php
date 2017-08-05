@@ -60,7 +60,7 @@ $data = $result->fetch_array();
                 &nbsp&nbsp
                 <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/se/upload/user_profile.png">
             <?php else :?>
-                <?php echo $data['id']; ?>
+                <?php echo $data['nick']."(".$data['id'].")"; ?>
                 &nbsp&nbsp
                 <?php
                     $dataId = $data['id'];

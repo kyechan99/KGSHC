@@ -38,7 +38,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/preset.php';
       <nav class="navbar navbar-inverse navbar-lg navbar-embossed" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/gimotti">
+            <a class="navbar-brand" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>">
               <img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/images/title.png">
             </a>
           </div>
