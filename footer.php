@@ -4,7 +4,7 @@
 <div class="footer" style="background-color: #ffffff">
 	<div class="container">
 		<h3></h3>
-		<strong style="margin-left: 35%;">관리자 문의 : kyechan99(카카오톡)</strong>
+		<strong style="margin-left: 35%;">문의 : kyechan99(카카오톡)</strong>
 	</div>
 </div>
 

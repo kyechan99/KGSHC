@@ -54,21 +54,28 @@ $data = $result->fetch_array();
 
   <table>
     <tr>  
-        <div style="font-size: 20px; float:right;padding-top: 0px; margin-right: 1%;border-left-width: 10px;margin-left: 30px;"><?php echo $data['id']; ?>    
-            &nbsp&nbsp
-            <?php
-            $dataId = $data['id'];
-            $mem_q = "SELECT * FROM ap_member WHERE id='$dataId'";
-            $mem_result = $mysqli->query($mem_q);
-            ?>
+        <div style="font-size: 20px; float:right;padding-top: 0px; margin-right: 1%;border-left-width: 10px;margin-left: 30px;">
+            <?php  if($bbs_idx == 1) :?>
+                익명
+                &nbsp&nbsp
+                <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/se/upload/user_profile.png">
+            <?php else :?>
+                <?php echo $data['id']; ?>
+                &nbsp&nbsp
+                <?php
+                    $dataId = $data['id'];
+                    $mem_q = "SELECT * FROM ap_member WHERE id='$dataId'";
+                    $mem_result = $mysqli->query($mem_q);
+                ?>
 
-            <?php while($mem_data = $mem_result->fetch_array()) :?>
-              <?php if($mem_data['id'] == $data['id']): ?>
-                <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/se/upload/<?php echo $mem_data['profile'];?>">
-            <?php endif ?>
-        <?php endwhile ?>
-    </div> 
-</tr>
+                <?php while($mem_data = $mem_result->fetch_array()) :?>
+                    <?php if($mem_data['id'] == $data['id']): ?>
+                        <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/se/upload/<?php echo $mem_data['profile'];?>">
+                    <?php endif ?>
+                <?php endwhile ?>
+          <?php endif ?>    
+        </div> 
+    </tr>
 </table>
 
 <hr style="border-top: 0.5px solid #34495E">
@@ -135,7 +142,10 @@ $data = $result->fetch_array();
             {
                 if($searchProfile['id'] == $mdata['id'])
                 {
-                    echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/'.$searchProfile['profile'].'">';
+                    if ($bbs_idx == 1)
+                        echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/user_profile.png">';
+                    else
+                        echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/'.$searchProfile['profile'].'">';
                 }
             }
 
@@ -147,7 +157,10 @@ $data = $result->fetch_array();
             {
                 echo "<div class='pull-right'>".date( 'Y-m-d H:i:s',$mdata['reg_date'])."</div>";
             }
-            echo "&nbsp;&nbsp;".$mdata['id'];
+            if ($bbs_idx == 1)
+                echo "&nbsp;&nbsp;익명";
+            else
+                echo "&nbsp;&nbsp;".$mdata['id'];
             echo "<br/>".$mdata['comment']."<br/>";
           echo '<br/>';
           echo '<hr style="border-top: 0.001px solid #dde4e7">';
@@ -163,7 +176,7 @@ $data = $result->fetch_array();
   <hr style="border-top: 0.001px solid #c0cdd1">
 
   <div class="navbar-collapse collapse" id="navbar-collapse-9">
-    <form name="comment_form" method="post" action="./comment_check?bbs_idx=<?php echo $bbs_idx; ?>&doc_idx=<?php echo $doc_idx; ?>" role="form">
+    <form name="comment_form" method="post" action="./comment_check.php?bbs_idx=<?php echo $bbs_idx; ?>&doc_idx=<?php echo $doc_idx; ?>" role="form">
         <input type="text" name="doc_idx" style="border-left-width: 0px;border-right-width: 0px;border-bottom-width: 0px;padding-bottom: 0px;border-top-width: 0px;padding-top: 0px;width: 0px;" value=<?php echo $doc_idx; ?>></input>
         <div class="form-group">
             <textarea type="text" name="comment" placeholder="댓글을 입력해 주세요." style="resize: none;" class="form-control" rows="6"></textarea>

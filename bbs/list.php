@@ -86,35 +86,55 @@ $mem_result = $mysqli->query($mem_q);
         <tr style="height: 150px;text-align:center;" onclick="location.href='http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/view.php?bbs_idx=<?php echo $bbs_idx; ?>&doc_idx=<?php echo $data['doc_idx']; ?>'" >
           <td style="font-size: 30px; padding-top: 5%;"><?php echo $data['doc_idx']?></td>
           <td style="padding-top: 5.5%;"><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/view.php?bbs_idx=<?php echo $bbs_idx; ?>&doc_idx=<?php echo $data['doc_idx']; ?>" style="padding-bottom: 15%; padding-top: 15%; padding-left: 10%; padding-right: 10%;"><?php echo htmlspecialchars($data['subject'])?></a></td>
-          <td style="font-size: 20px; padding-top: 4.7%;"><?php echo $data["nick"]?>
+          <?php  if($bbs_idx == 1) :?>
+            <td style="font-size: 20px; padding-top: 4.7%;">
+                    익명
+                    &nbsp&nbsp
+                    <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/se/upload/user_profile.png">
+            </td>
+
+            <td style="font-size: 20px; padding-top: 5.5%;">
+            <?php 
+                if(date( 'Y-m-d',$data['reg_date'] ) == date( 'Y-m-d',time() ))
+                {
+                  echo date( 'H:i:s',$data['reg_date'] );
+                }
+                else
+                {
+                  echo date( 'Y-m-d H:i:s',$data['reg_date'] );
+                }
+            ?>
+          </td>
+          <?php else :?>
+            <td style="font-size: 20px; padding-top: 4.7%;"><?php echo $data["nick"]?>
             &nbsp&nbsp
+                <?php
+                    $dataId = $data['id'];
+                    $mem_q = "SELECT * FROM ap_member WHERE id='$dataId'";
+                    $mem_result = $mysqli->query($mem_q);
+                ?>
 
+                <?php while($mem_data = $mem_result->fetch_array()) :?>
+                  <?php if($mem_data['id'] == $data['id']): ?>
+                    <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/se/upload/<?php echo $mem_data['profile'];?>">
+                  <?php endif ?>
+                <?php endwhile ?>
 
-            <?php
-            $dataId = $data['id'];
-            $mem_q = "SELECT * FROM ap_member WHERE id='$dataId'";
-            $mem_result = $mysqli->query($mem_q);
-            ?>
+                </td>
 
-            <?php while($mem_data = $mem_result->fetch_array()) :?>
-              <?php if($mem_data['id'] == $data['id']): ?>
-                <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/se/upload/<?php echo $mem_data['profile'];?>">
-              <?php endif ?>
-            <?php endwhile ?>
-
-          </td>
-
-          <td style="font-size: 20px; padding-top: 5.5%;"><?php 
-            if(date( 'Y-m-d',$data['reg_date'] ) == date( 'Y-m-d',time() ))
-            {
-              echo date( 'H:i:s',$data['reg_date'] );
-            }
-            else
-            {
-              echo date( 'Y-m-d H:i:s',$data['reg_date'] );
-            }
-            ?>
-          </td>
+                <td style="font-size: 20px; padding-top: 5.5%;">
+                <?php 
+                    if(date( 'Y-m-d',$data['reg_date'] ) == date( 'Y-m-d',time() ))
+                    {
+                      echo date( 'H:i:s',$data['reg_date'] );
+                    }
+                    else
+                    {
+                      echo date( 'Y-m-d H:i:s',$data['reg_date'] );
+                    }
+                ?>
+              </td>
+          <?php endif ?>
         </tr>
       <?php endwhile ?>
     </table>

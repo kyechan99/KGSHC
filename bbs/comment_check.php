@@ -7,7 +7,7 @@ if(isset($_SESSION['is_logged']))
 {
 	if($comment == '')
 	{
-		echo("<script>location.replace('../bbs/view.php?bbs_idx=".$bbs_idx."&doc_idx=".$doc_idx"');</script>");
+		echo("<script>location.replace('/view.php?bbs_idx=".$bbs_idx."&doc_idx=".$doc_idx."');</script>");
 	}
 	else
 	{

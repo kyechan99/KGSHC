@@ -128,7 +128,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="http://game.hs.kr" target="_blank">학교 사이트</a></li>
-                                <li> <a href="#fakelink" target="_blank">오픈 채팅방</a></li>
+                                <li> <a href="https://open.kakao.com/o/gvxUBIu" target="_blank">오픈 채팅방</a></li>
                                 <li> <a href="https://github.com/KGSH" target="_blank">KGSH GitHub</a></li>
                                 <li> <a href="https://github.com/kyechan99/KGSHC" target="_blank">KGSHC Repo</a></li>
                             </ul>
