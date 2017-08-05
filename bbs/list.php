@@ -27,7 +27,21 @@ $mem_result = $mysqli->query($mem_q);
 <br/>
 </div>
 <div class="container">
-  <h4>자유게시판</h4>
+    <?php 
+        if($bbs_idx==0)
+            echo "<h4>자유게시판</h4>";
+        else if($bbs_idx==1)
+            echo "<h4>익명게시판</h4>";
+        else if($bbs_idx==2)
+            echo "<h4>프로젝트 소개 게시판</h4>";
+        else if($bbs_idx==3)
+            echo "<h4>구인 / 구직 게시판</h4>";
+        else if($bbs_idx==4)
+            echo "<h4>급식 게시판</h4>";
+        else if($bbs_idx==5)
+            echo "<h4>교통 게시판</h4>";
+    ?>
+    
   <hr style="border-top: 1px solid #34495E">
   <div class="row">
     <div class="col-md-12">
@@ -96,9 +110,9 @@ $mem_result = $mysqli->query($mem_q);
             </td>
           <?php  if($bbs_idx == 1) :?>
             <td style="font-size: 20px; padding-top: 4.7%;">
-                    익명
+                    <?php echo $data["nick"]?>
                     &nbsp&nbsp
-                    <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/se/upload/user_profile.png">
+                    <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/se/upload/user_profile_hide.png">
             </td>
 
             <td style="font-size: 20px; padding-top: 5.5%;">

@@ -30,7 +30,20 @@ $data = $result->fetch_array();
 <div class="container">
     <table>
         <tr>
-            <h4>자유게시판</h4>
+            <?php 
+                if($bbs_idx==0)
+                    echo "<h4>자유게시판</h4>";
+                else if($bbs_idx==1)
+                    echo "<h4>익명게시판</h4>";
+                else if($bbs_idx==2)
+                    echo "<h4>프로젝트 소개 게시판</h4>";
+                else if($bbs_idx==3)
+                    echo "<h4>구인 / 구직 게시판</h4>";
+                else if($bbs_idx==4)
+                    echo "<h4>급식 게시판</h4>";
+                else if($bbs_idx==5)
+                    echo "<h4>교통 게시판</h4>";
+            ?>
             <hr style="border-top: 2px solid #34495E">
             <td>
                 <p style="font-size: 25px; margin-bottom: 0px;margin-top: 0px;margin-left: 30px;"><?php echo htmlspecialchars($data['subject']); ?></p>
@@ -56,9 +69,9 @@ $data = $result->fetch_array();
     <tr>  
         <div style="font-size: 20px; float:right;padding-top: 0px; margin-right: 1%;border-left-width: 10px;margin-left: 30px;">
             <?php  if($bbs_idx == 1) :?>
-                익명
+                <?php echo $data['nick']; ?>
                 &nbsp&nbsp
-                <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/se/upload/user_profile.png">
+                <img class="circular--square" width="50px" height="50px" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/se/upload/user_profile_hide.png">
             <?php else :?>
                 <?php echo $data['nick']."(".$data['id'].")"; ?>
                 &nbsp&nbsp
@@ -138,12 +151,16 @@ $data = $result->fetch_array();
             $mem_q = "SELECT * FROM ap_member WHERE id='$mem'";
             $mem_result = $mysqli->query($mem_q);
 
+            
+            if ($bbs_idx == 1)
+                echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/user_profile_hide.png">';
+            
             while($searchProfile = $mem_result->fetch_array())
             {
                 if($searchProfile['id'] == $mdata['id'])
                 {
                     if ($bbs_idx == 1)
-                        echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/user_profile.png">';
+                        echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/user_profile_hide.png">';
                     else
                         echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/'.$searchProfile['profile'].'">';
                 }
@@ -157,11 +174,9 @@ $data = $result->fetch_array();
             {
                 echo "<div class='pull-right'>".date( 'Y-m-d H:i:s',$mdata['reg_date'])."</div>";
             }
-            if ($bbs_idx == 1)
-                echo "&nbsp;&nbsp;익명";
-            else
-                echo "&nbsp;&nbsp;".$mdata['id'];
-            echo "<br/>".$mdata['comment']."<br/>";
+            
+          echo "&nbsp;&nbsp;".$mdata['id'];
+          echo "<br/>".$mdata['comment']."<br/>";
           echo '<br/>';
           echo '<hr style="border-top: 0.001px solid #dde4e7">';
       }
@@ -177,6 +192,17 @@ $data = $result->fetch_array();
 
   <div class="navbar-collapse collapse" id="navbar-collapse-9">
     <form name="comment_form" method="post" action="./comment_check.php?bbs_idx=<?php echo $bbs_idx; ?>&doc_idx=<?php echo $doc_idx; ?>" role="form">
+        
+        <?php if($bbs_idx == 1): ?>
+            <div class="form-group" id="correct_input_id">
+              <label for="inputEmail1" class="col-lg-2 control-label">익명 아이디</label>
+              <div class="col-sm-10">
+                <input class="form-control" type="text" name="uid" id="formGroupInputLarge" placeholder="아이디" onblur="correct_check('correct_input_id')" required/>
+                <span class="form-control-feedback control-feedback-lg  fui-user"  style="padding-right: 30px;margin-top: 0px;top: 0px;"></span>
+              </div>
+            </div>
+        <?php endif ?>
+        
         <input type="text" name="doc_idx" style="border-left-width: 0px;border-right-width: 0px;border-bottom-width: 0px;padding-bottom: 0px;border-top-width: 0px;padding-top: 0px;width: 0px;" value=<?php echo $doc_idx; ?>></input>
         <div class="form-group">
             <textarea type="text" name="comment" placeholder="댓글을 입력해 주세요." style="resize: none;" class="form-control" rows="6"></textarea>

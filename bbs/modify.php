@@ -22,7 +22,20 @@ $data = $result->fetch_array();
     <h3>글쓰기</h3>
     <div class="row">
         <div class="col-md-12">
-            <h4>자유게시판</h4>
+          <?php 
+            if($bbs_idx==0)
+                echo "<h4>자유게시판</h4>";
+            else if($bbs_idx==1)
+                echo "<h4>익명게시판</h4>";
+            else if($bbs_idx==2)
+                echo "<h4>프로젝트 소개 게시판</h4>";
+            else if($bbs_idx==3)
+                echo "<h4>구인 / 구직 게시판</h4>";
+            else if($bbs_idx==4)
+                echo "<h4>급식 게시판</h4>";
+            else if($bbs_idx==5)
+                echo "<h4>교통 게시판</h4>";
+            ?>
             <form name ="modify_form" method = "POST" action = "./modify_check.php?bbs_idx=<?php echo $bbs_idx; ?>&doc_idx=<?php echo $doc_idx; ?>">
                 <div class="form-group">
                     <input type="text" class="form-control" name = "subject" value="<?php echo $data['subject'];?>">

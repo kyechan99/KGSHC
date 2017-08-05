@@ -17,11 +17,36 @@ echo("<script>location.replace('../member/relogin.php');</script>");
     <h3>글쓰기</h3>
     <div class="row">
         <div class="col-md-12">
-            <h4>자유게시판</h4>
+            <?php 
+                if($bbs_idx==0)
+                    echo "<h4>자유게시판</h4>";
+                else if($bbs_idx==1)
+                    echo "<h4>익명게시판</h4>";
+                else if($bbs_idx==2)
+                    echo "<h4>프로젝트 소개 게시판</h4>";
+                else if($bbs_idx==3)
+                    echo "<h4>구인 / 구직 게시판</h4>";
+                else if($bbs_idx==4)
+                    echo "<h4>급식 게시판</h4>";
+                else if($bbs_idx==5)
+                    echo "<h4>교통 게시판</h4>";
+            ?>
             <form  name ="write_form" method = "POST" action="./write_check.php?bbs_idx=<?php echo $bbs_idx; ?>" class="form">
                 <div class="form-group">
                     <input type="text" class="form-control" name = "subject" placeholder="제목">
                 </div>
+                <?php if($bbs_idx == 1): ?>
+                    <div class="form-group" id="correct_input_id">
+                      <label for="inputEmail1" class="col-lg-2 control-label">익명 아이디</label>
+                      <div class="col-sm-10">
+                        <input class="form-control" type="text" name="uid" id="formGroupInputLarge" placeholder="아이디" onblur="correct_check('correct_input_id')" required/>
+                        <span class="form-control-feedback control-feedback-lg  fui-user"  style="padding-right: 30px;margin-top: 0px;top: 0px;"></span>
+                      </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                <?php endif ?>
                 <div class="form-group">
                     <textarea name="content"; id="ir1";  rows="15"; cols="30";  placeholder="내용"; style="width:1135px; height:470px; "></textarea>
                     <script type="text/javascript">

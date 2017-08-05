@@ -13,8 +13,11 @@ if(isset($_SESSION['is_logged']))
 	{
 		$reg_date = time();
 		$id = $_SESSION['user_id'];
-
-		$q = "INSERT INTO ap_comment_$bbs_idx ( doc_idx, id, comment, reg_date ) VALUES ( '$doc_idx', '$id', '$comment', '$reg_date' )";
+        
+        if ($bbs_idx == 1)
+		  $q = "INSERT INTO ap_comment_1 ( doc_idx, id, comment, reg_date ) VALUES ( '$doc_idx', '$uid', '$comment', '$reg_date' )";
+        else
+		  $q = "INSERT INTO ap_comment_$bbs_idx ( doc_idx, id, comment, reg_date ) VALUES ( '$doc_idx', '$id', '$comment', '$reg_date' )";
 
 		$mysqli->query( $q);
 
