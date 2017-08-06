@@ -18,7 +18,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/header.php';
     <br/><br/>
     <div class="row">
         <div class="col-md-12 col-md-offset-4">
-            <h4>위 사이트는 모두 <a href="https://github.com/kyechan99/KGSHC" target="_blank">오픈소스</a>입니다.</h4>
+            <h4>위 사이트는 모두 <a href="https://github.com/kyechan99/KGSHC" target="_blank">오픈소스</a>DEATH !!</h4>
         </div>
     </div>
     <br/><br/>

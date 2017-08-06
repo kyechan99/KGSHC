@@ -19,9 +19,9 @@ echo("<script>location.replace('../member/relogin.php');</script>");
         <div class="col-md-12">
             <?php 
                 if($bbs_idx==0)
-                    echo "<h4>자유게시판</h4>";
+                    echo "<h4>자유 게시판</h4>";
                 else if($bbs_idx==1)
-                    echo "<h4>익명게시판</h4>";
+                    echo "<h4>게임고 대나무숲</h4>";
                 else if($bbs_idx==2)
                     echo "<h4>프로젝트 소개 게시판</h4>";
                 else if($bbs_idx==3)

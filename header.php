@@ -111,7 +111,7 @@
 
                         <li class="dropdown">
                             <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
-                                생활게시판
+                                생활
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -120,10 +120,10 @@
                             </ul>
                         </li>
 
-                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=0">자유게시판</a></li>
+                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=0">자유 게시판</a></li>
 
 
-                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=1">익명게시판</a></li>
+                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=1">게임고 대나무숲</a></li>
                         
                         <li class="dropdown">
                             <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
