@@ -163,22 +163,19 @@ $data = $result->fetch_array();
                         echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/user_profile_hide.png">';
                     else
                         echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/'.$searchProfile['profile'].'">';
+                    
+                    echo "&nbsp;&nbsp;".$searchProfile['nick']."(".$mdata['id'].")";
                 }
             }
 
             if(date( 'Y-m-d',$mdata['reg_date'] ) == date( 'Y-m-d',time() ))
-            {
                 echo "<div class='pull-right'>".date('H:i:s',$mdata['reg_date'])."</div>";
-            }
             else
-            {
                 echo "<div class='pull-right'>".date( 'Y-m-d H:i:s',$mdata['reg_date'])."</div>";
-            }
             
-          echo "&nbsp;&nbsp;".$mdata['id'];
-          echo "<br/>".$mdata['comment']."<br/>";
-          echo '<br/>';
-          echo '<hr style="border-top: 0.001px solid #dde4e7">';
+            echo "<br/>".$mdata['comment']."<br/>";
+            echo '<br/>';
+            echo '<hr style="border-top: 0.001px solid #dde4e7">';
       }
   }
   ?>

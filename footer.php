@@ -4,7 +4,7 @@
 <div class="footer" style="background-color: #ffffff">
 	<div class="container">
 		<h3></h3>
-		<strong style="margin-left: 35%;">@KGSHC</strong>
+		<strong style="margin-left: 45%;">@KGSHC</strong>
 	</div>
 </div>
 
