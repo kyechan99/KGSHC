@@ -155,18 +155,20 @@ $data = $result->fetch_array();
             if ($bbs_idx == 1)
                 echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/user_profile_hide.png">';
             
+            if ($bbs_idx != 1)
             while($searchProfile = $mem_result->fetch_array())
             {
                 if($searchProfile['id'] == $mdata['id'])
                 {
-                    if ($bbs_idx == 1)
-                        echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/user_profile_hide.png">';
-                    else
-                        echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/'.$searchProfile['profile'].'">';
-                    
-                    echo "&nbsp;&nbsp;".$searchProfile['nick']."(".$mdata['id'].")";
+                    echo '<img class="circular--square" width="50px" height="50px" src="http://'.$_SERVER['HTTP_HOST'].'/bbs/se/upload/'.$searchProfile['profile'].'">';
+                    echo "&nbsp;&nbsp;".$searchProfile['nick']."(";
+                    break;
                 }
             }
+            
+            echo $mdata['id'];
+            if ($bbs_idx != 1)
+                echo ")";
 
             if(date( 'Y-m-d',$mdata['reg_date'] ) == date( 'Y-m-d',time() ))
                 echo "<div class='pull-right'>".date('H:i:s',$mdata['reg_date'])."</div>";
