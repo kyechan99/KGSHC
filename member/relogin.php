@@ -57,12 +57,12 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/preset.php';
           <div class="login-form">
             <form name="login_form" method="post" action="./login_check.php" >
               <div class="form-group">
-                <input type="text" name="user_id" class="form-control login-field" value="" placeholder="Id" id="login-name" />
+                <input type="text" name="user_id" class="form-control login-field" value="" placeholder="아이디" id="login-name" />
                 <label class="login-field-icon fui-user" for="login-name"></label>
               </div>
 
               <div class="form-group">
-                <input type="password" name="user_pass" class="form-control login-field" value="" placeholder="Password" id="login-pass" />
+                <input type="password" name="user_pass" class="form-control login-field" value="" placeholder="비밀번호" id="login-pass" />
                 <label class="login-field-icon fui-lock" for="login-pass"></label>
               </div>
 
