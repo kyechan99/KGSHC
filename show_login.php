@@ -2,7 +2,7 @@
 <div class="navbar-collapse collapse" id="navbar-collapse-9">
     <form name="login_form" method="post" action="http://<?php echo $_SERVER['HTTP_HOST']; ?>/member/login_check.php" class="navbar-form navbar-right" role="form">
         <div class="form-group">
-            <input type="text" name="user_id" placeholder="Email" class="form-control">
+            <input type="text" name="user_id" placeholder="Id" class="form-control">
         </div>
         <div class="form-group">
             <input type="password" name="user_pass" placeholder="Password" class="form-control">
