@@ -30,7 +30,7 @@ $data = $result->fetch_array();
             else if($bbs_idx==2)
                 echo "<h4>프로젝트 소개 게시판</h4>";
             else if($bbs_idx==3)
-                echo "<h4>구인 / 구직 게시판</h4>";
+                echo "<h4>게임고 영화관</h4>";
             else if($bbs_idx==4)
                 echo "<h4>급식 게시판</h4>";
             else if($bbs_idx==5)
