@@ -23,14 +23,14 @@
 <br/>
 
 ## 프로젝트에 참여하고 있는 분들
-- 관리자
- - [@강예찬(12기)](https://github.com/kyechan99)
- - [@김태양(12기)](https://github.com/Lazyevilsquid)
+  - 관리자
+    - [@강예찬(12기)](https://github.com/kyechan99)
+    - [@김태양(12기)](https://github.com/Lazyevilsquid)
 
-- Collaborators 
- - [@윤준서(12기)](https://github.com/plancat)
- - [@심민석(12기)](https://github.com/hhh57463)
- - [@강성우(12기)](https://github.com/Kassia-99)
+  - Collaborators 
+    - [@윤준서(12기)](https://github.com/plancat)
+    - [@심민석(12기)](https://github.com/hhh57463)
+    - [@강성우(12기)](https://github.com/Kassia-99)
 
 <br/>
 
