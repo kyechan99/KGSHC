@@ -97,18 +97,11 @@
                     <ul class="nav navbar-nav navbar-left">
 
                         <li class="active"><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>">메인</a></li>
+                        
+                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=2">프로젝트</a></li>
 
-                        <li class="dropdown">
-                            <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
-                                프로젝트
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=2">프로젝트 소개</a></li>
-                                <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=3">구인/구직</a></li>
-                            </ul>
-                        </li>
-
+                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/bbs/list.php?bbs_idx=3">게임고 영화관</a></li>
+                        
                         <li class="dropdown">
                             <a href="#fakelink" class="dropdown-toggle" data-toggle="dropdown">
                                 생활
