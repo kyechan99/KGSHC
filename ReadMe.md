@@ -1,5 +1,9 @@
 # KGSHC
 ![img](http://kgshc.net/images/title.png)
+
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/kyechan99/KGSHC/issues)
+[![HitCount](https://hitt.herokuapp.com/kyechan99/KGSHC.svg)](https://github.com/kyechan99/KGSHC)
+
 - 사이트 주소 : [kgshc.net](http://kgshc.net)
 - Organization : [KGSH](https://github.com/KGSH)
 
@@ -26,6 +30,7 @@
   - 관리자
     - [@강예찬(12기)](https://github.com/kyechan99)
     - [@김태양(12기)](https://github.com/Lazyevilsquid)
+    - [@전현진(13기)]()
 
   - Collaborators 
     - [@윤준서(12기)](https://github.com/plancat)

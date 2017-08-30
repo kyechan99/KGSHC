@@ -202,13 +202,13 @@ $mem_result = $mysqli->query($mem_q);
         ?>
 
         <?php for($i=$start_page;$i<=$end_page;$i++) :?>
-          <li><a href="./list?bbs_idx=<?php echo $bbs_idx; ?>&id=<?php echo $id ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+          <li><a href="./list.php?bbs_idx=<?php echo $bbs_idx; ?>&id=<?php echo $id ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
         <?php endfor?>
       </ul>
       <?php
       if($now_block < $total_block) {
         $post_page = ($now_block)*$page_per_block+1;
-        echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/bbs/list?bbs_idx='.$bbs_idx.'&page='.$post_page.'">다음</a>';
+        echo '<a href="http://'.$_SERVER['HTTP_HOST'].'/bbs/list.php?bbs_idx='.$bbs_idx.'&page='.$post_page.'">다음</a>';
       }
 
       ?>

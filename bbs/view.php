@@ -102,11 +102,10 @@ $data = $result->fetch_array();
 <br/>
 </table>
 
+<br/>
+<br/>
+<br/>
 
-<br/>
-<br/>
-<br/>
-<hr style="border-top: 0.001px solid #c0cdd1">
 <div class="row">
     <div class="col-md-12">
       <p>
@@ -138,6 +137,10 @@ $data = $result->fetch_array();
     $comment_q = "SELECT * FROM ap_comment_$bbs_idx WHERE doc_idx = '$doc_idx'";
     $comment_result = $mysqli->query($comment_q);
     $comment_num = $comment_result->num_rows;
+
+
+    //echo "아직 추천기능이 없습니다. 댓글에 [추천]을 적어주시면 차후 업데이트 하겠습니다.";
+
 
     if($comment_num==0)
     {
