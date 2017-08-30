@@ -3,7 +3,8 @@ require_once '../preset.php';
 ?>
 <?php
 
-$q = "SELECT * FROM ap_member WHERE id='$user_id'";
+$reid = stripslashes($user_id);
+$q = "SELECT * FROM ap_member WHERE id='$reid'";
 $result = $mysqli->query( $q);
 
 if($result->num_rows==1) {
